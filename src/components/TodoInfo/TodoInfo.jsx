@@ -1,37 +1,15 @@
-import React from 'react';
+import cn from 'classnames';
+
 import { UserInfo } from '../UserInfo/UserInfo';
 
-export const TodoInfo = ({ todo }) => (
-  <article
-    className={`TodoInfo ${todo.completed ? 'TodoInfo--completed' : ''}`}
-  >
-    <h2 className="TodoInfo__title">{todo.title}</h2>
-    <UserInfo user={todo.user} />
-  </article>
-);
+export const TodoInfo = ({ todo }) => {
+  const { title, completed, user } = todo;
 
-/*
-<article className="TodoInfo TodoInfo--completed">
-      <h2 className="TodoInfo__title">CSS</h2>
+  return (
+    <article className={cn('TodoInfo', completed && 'TodoInfo--completed')}>
+      <h2 className="TodoInfo__title">{title}</h2>
 
-      <a className="UserInfo" href="mailto:Sincere@april.biz">
-        Leanne Graham
-      </a>
+      <UserInfo user={user} />
     </article>
-
-    <article className="TodoInfo TodoInfo--completed">
-      <h2 className="TodoInfo__title">JS</h2>
-
-      <a className="UserInfo" href="mailto:Shanna@melissa.tv">
-        Ervin Howell
-      </a>
-    </article>
-
-    <article className="TodoInfo">
-      <h2 className="TodoInfo__title">React</h2>
-
-      <a className="UserInfo" href="mailto:Nathan@yesenia.net">
-        Clementine Bauch
-      </a>
-    </article>
-*/
+  );
+};
